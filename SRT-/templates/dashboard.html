@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ROSHAN TECHNOLOGIES</title>
+    <style>
+        :root {
+            --primary-color: #D4AF37;
+            --text-white: #ffffff;
+            --bg-black: #000000;
+            --gray: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bg-black) 0%, #1a1a1a 100%);
+            color: var(--text-white);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 20px 0;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .brand-info h1 {
+            color: var(--primary-color);
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
+
+        .brand-info p {
+            color: #cccccc;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-welcome {
+            text-align: right;
+        }
+
+        .user-welcome h3 {
+            color: var(--primary-color);
+            margin-bottom: 2px;
+        }
+
+        .user-welcome p {
+            color: #cccccc;
+            font-size: 14px;
+        }
+
+        .logout-btn {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(220, 53, 69, 0.3);
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .welcome-card h2 {
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .welcome-card p {
+            color: #cccccc;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .feature-card p {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        .stats-section {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            color: var(--primary-color);
+            font-size: 32px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            color: #cccccc;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .user-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="{{ url_for('static', filename='logo.jpg') }}" alt="SRT Logo" class="logo">
+                <div class="brand-info">
+                    <h1>ROSHAN TECHNOLOGIES</h1>
+                    <p>INNOVATE . ELEVATE . DOMINATE</p>
+                </div>
+            </div>
+
+            <div class="user-section">
+                <div class="user-welcome">
+                    <h3>Welcome back, {{ user_name }}!</h3>
+                    <p>Account Dashboard</p>
+                </div>
+                <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="welcome-card">
+            <h2>Dashboard</h2>
+            <p>You have successfully joined the ROSHAN TECHNOLOGIES community. Explore cutting-edge technology solutions
+                and stay ahead of the curve.</p>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <div class="stat-label">Support Available</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100+</span>
+                <div class="stat-label">Solutions Delivered</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">5★</span>
+                <div class="stat-label">Customer Rating</div>
+            </div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>🚀 Innovation Hub</h3>
+                <p>Access to cutting-edge AI and machine learning solutions that revolutionize your business processes.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>📈 Business Growth</h3>
+                <p>Advanced analytics and insights to elevate your business performance and market dominance.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>🔧 Technical Support</h3>
+                <p>24/7 expert technical support to ensure seamless integration and optimal performance.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>🌐 Global Reach</h3>
+                <p>Connect with a worldwide network of technology leaders and industry innovators.</p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
