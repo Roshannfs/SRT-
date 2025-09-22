@@ -9,7 +9,7 @@ import os
 app = Flask(__name__)
 app.secret_key = 'roshan_tech_secret_key_2024'
 
-app.config['MONGO_URI'] = 'mongodb+srv://roshan:<q2Kugyxqzmhwt2eI>@cluster0.chq0vji.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+app.config['MONGO_URI'] = 'mongodb+srv://roshan:<duKGGl8caGNsyYLV>@cluster0.chq0vji.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 mongo = PyMongo(app)
 
 def send_otp(email, otp):
